@@ -24,7 +24,7 @@ CREATE TABLE products (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL,
   price DECIMAL(10,2) NOT NULL,
-  category_id INT NOT NULL,
+  category_id INT NOT NULL UNIQUE,
   PRIMARY KEY (id),
   FOREIGN KEY (category_id) REFERENCES categories(id)
 );
@@ -33,6 +33,7 @@ CREATE TABLE products (
 CREATE TABLE characteristics (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL,
+  value VARCHAR(255),
   PRIMARY KEY (id)
 );
 
@@ -41,7 +42,6 @@ CREATE TABLE product_characteristics (
   id INT NOT NULL AUTO_INCREMENT,
   characteristic_id INT NOT NULL,
   product_id INT NOT NULL,
-  value VARCHAR(255),
   PRIMARY KEY (id),
   FOREIGN KEY (characteristic_id) REFERENCES characteristics(id),
   FOREIGN KEY (product_id) REFERENCES products(id)

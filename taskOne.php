@@ -1,7 +1,7 @@
 <?php
 class Auto
 {
-    protected int $speed;
+    private int $speed;
 
     public function setSpeed(int $speed): void
     {
